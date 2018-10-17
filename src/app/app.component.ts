@@ -11,12 +11,14 @@ export class AppComponent {
   forecast;
   constructor(private api: WeatherApiService) {}
 
-  ngOnInit() {}
-
-  getWeather() {
-    this.api.getWeatherByZip(54601, 'us').subscribe(res => {
+  ngOnInit() {
+   this.api.getWeatherByZip(54601, 'us').subscribe(res => {
       this.forecast = res;
       console.log(res);
     });
+  }
+
+  getWeather() {
+    
   }
 }
