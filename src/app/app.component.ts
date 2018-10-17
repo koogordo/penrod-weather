@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { WeatherApiService } from './services/data/weather-api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'penrod-weather';
+  forecast;
+  constructor(private api: WeatherApiService) {}
+
+  ngOnInit() {}
+
+  getWeather() {
+    this.api.getWeatherByZip(54601, 'us').subscribe(res => {
+      this.forecast = res;
+      console.log(res);
+    });
+  }
 }
