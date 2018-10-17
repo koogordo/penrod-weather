@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import dataConfig from './config/dataConfig';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,11 +18,7 @@ export class WeatherApiService {
     this.sixteenDayRoute = dataConfig.sixteenDayForecastUrl;
   }
 
-  getWeatherByZip(zip, countryCode) {
-    return this.http.get(
-      `${this.weatherRoute}?zip=${zip},${countryCode}&APPID=${
-        this.apiID
-      }`
-    );
+  getWeather(id): Observable<any> {
+    return this.http.get(`${this.weatherRoute}?id=${id}&APPID=${this.apiID}`);
   }
 }
