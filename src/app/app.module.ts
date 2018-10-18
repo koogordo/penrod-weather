@@ -14,11 +14,13 @@ import { WeatherApiService } from './services/data/weather-api.service';
 import { FiveDayComponent } from './components/five-day/five-day.component';
 import { SixteenDayComponent } from './components/sixteen-day/sixteen-day.component';
 import { TemperatureConversionPipe } from './pipes/temperature-conversion.pipe';
+import { WindDirectionPipe } from './pipes/wind-direction.pipe';
+import { PressureConverterPipe } from './pipes/pressure-converter.pipe';
 
 // Third Party Dependencies
 
 @NgModule({
-  declarations: [AppComponent, WeatherFrameComponent, FiveDayComponent, SixteenDayComponent, TemperatureConversionPipe],
+  declarations: [AppComponent, WeatherFrameComponent, FiveDayComponent, SixteenDayComponent, TemperatureConversionPipe, WindDirectionPipe, PressureConverterPipe],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [DatabaseService, WeatherApiService],
   bootstrap: [AppComponent]
