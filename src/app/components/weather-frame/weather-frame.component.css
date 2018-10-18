@@ -1,0 +1,22 @@
+.weather-frame {
+  height: 600px;
+  width: 800px;
+}
+
+.flex-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame-title {
+  font-size: 2.2em;
+}
+
+.temp {
+  font-size: 6.7em;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../../services/data/weather-api.service';
+import { TemperatureConversionPipe } from '../../pipes/temperature-conversion.pipe';
 @Component({
   selector: 'app-weather-frame',
   templateUrl: './weather-frame.component.html',
@@ -7,11 +8,48 @@ import { WeatherApiService } from '../../services/data/weather-api.service';
 })
 export class WeatherFrameComponent implements OnInit {
   weather: any;
-  constructor(private api: WeatherApiService) {}
+  fiveDayWeather: any[];
+  sixteenDayWeather: any;
+  constructor(private api: WeatherApiService) {
+    this.fiveDayWeather = [];
+    this.weather = {};
+  }
 
   ngOnInit() {
     this.api.getWeather(524901).subscribe(res => {
       this.weather = res;
+      console.log(res);
     });
+
+    this.api.getFiveDay(524901).subscribe(res => {
+      console.log(res);
+      let tempWeather = res.list.map(forecast => {
+        return forecast;
+      });
+      this.fiveDayWeather = this.sortFiveDay(tempWeather);
+      console.log(this.fiveDayWeather);
+    });
+  }
+
+  sortFiveDay(weatherArr) {
+    let day1 = [];
+    let day2 = [];
+    let day3 = [];
+    let day4 = [];
+    let day5 = [];
+    for (let i = 0; i < weatherArr.length; i++) {
+      if (i < 7) {
+        day1.push(weatherArr[i]);
+      } else if (i >= 7 && i < 15) {
+        day2.push(weatherArr[i]);
+      } else if (i >= 15 && i < 23) {
+        day3.push(weatherArr[i]);
+      } else if (i >= 23 && i < 31) {
+        day4.push(weatherArr[i]);
+      } else if (i >= 31 && i < 39) {
+        day5.push(weatherArr[i]);
+      }
+    }
+    return [day1, day2, day3, day4, day5];
   }
 }

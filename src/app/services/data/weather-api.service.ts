@@ -21,4 +21,8 @@ export class WeatherApiService {
   getWeather(id): Observable<any> {
     return this.http.get(`${this.weatherRoute}?id=${id}&APPID=${this.apiID}`);
   }
+
+  getFiveDay(id): Observable<any> {
+    return this.http.get(`${this.fiveDayRoute}?id=${id}&APPID=${this.apiID}`);
+  }
 }

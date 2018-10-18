@@ -1,3 +1,12 @@
-<p>
-  weather-frame works!
-</p>
+<div class="flex-frame full-height">
+  <div class="slds-card weather-frame">
+    <div class="slds-card__header">
+      <h1 class="slds-card__header-title frame-title">{{weather.name}}</h1>
+    </div>
+    <div class="slds-card__body slds-card__body-inner">
+      <h1 class="temp">{{weather.main.temp | temp }} </h1>
+      <br>
+      <app-five-day [fiveDayForcasts]="fiveDayWeather"></app-five-day>
+    </div>
+  </div>
+</div>

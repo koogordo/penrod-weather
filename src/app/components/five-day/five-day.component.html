@@ -1,3 +1,7 @@
-<p>
-  five-day works!
-</p>
+<div class="slds-grid">
+  <div *ngFor="let forecast of fiveDayForcasts" class="slds-col">
+    <ul>
+      <li *ngFor="let weather of forecast">{{weather.main.temp}}</li>
+    </ul>
+  </div>
+</div>
