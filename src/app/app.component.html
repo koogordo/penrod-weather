@@ -1,35 +1,15 @@
 <div class="slds-grid full-height">
   <div class="slds-col full-height">
-    <div class="demo-only" style="width: 320px;">
-      <nav class="slds-nav-vertical" aria-label="Sub page">
-        <div class="slds-nav-vertical__section">
-          <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Reports</h2>
-          <ul>
-            <li class="slds-nav-vertical__item slds-is-active"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="entity-header" aria-current="page">Recent</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="entity-header">Created by Me</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="entity-header">Private Reports</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="entity-header">Public Reports</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="entity-header">All Reports</a></li>
-          </ul>
-        </div>
-        <div class="slds-nav-vertical__section">
-          <h2 id="folder-header" class="slds-nav-vertical__title slds-text-title_caps">Folders</h2>
-          <ul>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="folder-header">Created by Me</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="folder-header">Shared with Me</a></li>
-            <li class="slds-nav-vertical__item"><a href="javascript:void(0);" class="slds-nav-vertical__action"
-                aria-describedby="folder-header">All Reports</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <nav class="slds-nav-vertical" aria-label="Sub page">
+      <div class="slds-nav-vertical__section">
+        <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Locations</h2>
+        <ul>
+          <li *ngFor="let location of locations" class="slds-nav-vertical__item"><a [routerLink]="['viewweather', location.cityId]"
+              class="slds-nav-vertical__action" aria-describedby="entity-header" aria-current="page">{{location.name}}</a></li>
+        </ul>
+      </div>
+    </nav>
+
   </div>
   <div class="slds-col full-height">
     <router-outlet></router-outlet>

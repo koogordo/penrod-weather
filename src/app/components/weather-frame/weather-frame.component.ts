@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../../services/data/weather-api.service';
+import { ActivatedRoute } from '@angular/router';
 import { TemperatureConversionPipe } from '../../pipes/temperature-conversion.pipe';
+
 @Component({
   selector: 'app-weather-frame',
   templateUrl: './weather-frame.component.html',
@@ -10,18 +12,18 @@ export class WeatherFrameComponent implements OnInit {
   weather: any;
   fiveDayWeather: any[];
   sixteenDayWeather: any;
-  constructor(private api: WeatherApiService) {
+  constructor(private api: WeatherApiService, private route: ActivatedRoute) {
     this.fiveDayWeather = [];
     this.weather = {};
   }
 
   ngOnInit() {
-    this.api.getWeather(524901).subscribe(res => {
+    this.api.getWeather(this.route.snapshot.params['id']).subscribe(res => {
       this.weather = res;
       console.log(res);
     });
 
-    this.api.getFiveDay(524901).subscribe(res => {
+    this.api.getFiveDay(this.route.snapshot.params['id']).subscribe(res => {
       console.log(res);
       let tempWeather = res.list.map(forecast => {
         return forecast;

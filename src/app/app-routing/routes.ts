@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { WeatherFrameComponent } from '../components/weather-frame/weather-frame.component';
 export const routes: Routes = [
   {
-    path: '',
+    path: 'viewweather/:id',
     component: WeatherFrameComponent
   },
   { path: '*', redirectTo: '' }

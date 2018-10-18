@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WeatherApiService } from './services/data/weather-api.service';
+import { DatabaseService } from './services/data/database.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +9,12 @@ import { WeatherApiService } from './services/data/weather-api.service';
 })
 export class AppComponent {
   title = 'penrod-weather';
+  locations;
+  constructor(private db: DatabaseService) {}
+
+  ngOnInit() {
+    this.db.getLocations().subscribe(locs => {
+      this.locations = locs;
+    });
+  }
 }
