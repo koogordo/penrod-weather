@@ -1,4 +1,5 @@
 <div [ngClass]="getForecastBackground(currentWeather.weather[0].main)">
+   <div class="weather-display-panel">
   <div class="top-frame-panel">
     <div class="top-panel-item">
       <h1 class="frame-title">{{currentWeather.name}}</h1>
@@ -25,4 +26,5 @@
       <app-five-day [forecast]="day"></app-five-day>
     </div>
   </div>
+</div>
 </div>

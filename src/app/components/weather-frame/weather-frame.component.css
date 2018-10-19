@@ -24,6 +24,12 @@
   width: 100%;
   padding-top: 25px;
 }
+.weather-display-panel {
+   border: solid 1px;
+   background-color: rgba(50, 50, 50, .65);
+   width: 100%;
+   height: 100%;
+}
 .top-panel-item {
   align-self: auto;
   width: 33%;

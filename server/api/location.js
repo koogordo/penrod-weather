@@ -38,10 +38,10 @@ router.get('/all', (req, res) => {
 
 // POST
 // add a new location
-router.post('/createlocation', (req, res) => {
-   if (req.body) {
-      Location.save()
-   }
-})
+// router.post('/createlocation', (req, res) => {
+//    if (req.body) {
+//       Location.save()
+//    }
+// })
 
 module.exports = router;

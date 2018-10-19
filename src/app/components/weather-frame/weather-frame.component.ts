@@ -71,12 +71,12 @@ export class WeatherFrameComponent implements OnInit {
   }
 
   getForecastBackground(forecast) {
-    let classes = ['flex-frame', 'full-height'];
+    let classes = ['flex-frame', 'full-height','weather-panel-bg'];
     if (forecast === 'Clear') {
       classes.push('clear-skys');
     } else if (forecast === 'Clouds') {
       classes.push('cloudy');
-    } else if (forecast === 'Rain') {
+    } else if (forecast === 'Rain' || forecast === 'Drizzle' ) {
       classes.push('rain');
     }
     return classes;
