@@ -14,4 +14,12 @@ export class DatabaseService {
   getLocation(cityId): Observable<any> {
     return this.http.get(`http://localhost:5000/api/location/fetch/${cityId}`);
   }
+
+  addLocation() {
+   return this.http.post(`http://localhost:5000/addlocation`, {});
+  }
+
+  deleteLocation(cityId) {
+   return this.http.post(`http://localhost:5000/deletelocation`, {cityId});
+  }
 }

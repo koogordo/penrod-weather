@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from './services/data/database.service';
 
@@ -10,6 +11,7 @@ import { DatabaseService } from './services/data/database.service';
 export class AppComponent {
   title = 'penrod-weather';
   locations;
+  newLocFormGroup: FormGroup;
   constructor(private db: DatabaseService) {}
 
   ngOnInit() {
