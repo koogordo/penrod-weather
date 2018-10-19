@@ -11,7 +11,7 @@ import { DatabaseService } from './services/data/database.service';
 export class AppComponent {
   title = 'penrod-weather';
   locations;
-  newLocFormGroup: FormGroup;
+  //newLocFormGroup: FormGroup;
   constructor(private db: DatabaseService) {}
 
   ngOnInit() {
