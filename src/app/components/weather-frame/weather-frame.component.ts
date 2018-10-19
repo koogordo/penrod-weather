@@ -15,6 +15,7 @@ export class WeatherFrameComponent implements OnInit {
   fiveDayWeather: any[];
   sixteenDayWeather: any;
   currentDateTime;
+  routeInputs;
   uvIndex: any;
 
   constructor(private api: WeatherApiService, private route: ActivatedRoute) {
@@ -24,21 +25,26 @@ export class WeatherFrameComponent implements OnInit {
 
   ngOnInit() {
     this.currentDateTime = Date.now();
-    this.api.getWeather(this.route.snapshot.params['id']).subscribe(res => {
-      this.currentWeather = res;
-      this.api.getUvIndex(res.coord.lat, res.coord.lon).subscribe(res => {
-        this.currentWeather.uvIndex = Math.round(res.value);
-        console.log(this.currentWeather);
-      });
-    });
 
-    this.api.getFiveDay(this.route.snapshot.params['id']).subscribe(res => {
-      console.log(res);
-      let tempWeather = res.list.map(forecast => {
-        return forecast;
+    this.routeInputs = this.route.params.subscribe(params => {
+      const term = params['id'];
+
+      this.api.getWeather(term).subscribe(res => {
+        this.currentWeather = res;
+        this.api.getUvIndex(res.coord.lat, res.coord.lon).subscribe(res => {
+          this.currentWeather.uvIndex = Math.round(res.value);
+          console.log(this.currentWeather);
+        });
       });
-      this.fiveDayWeather = this.sortFiveDay(tempWeather);
-      console.log(this.fiveDayWeather);
+
+      this.api.getFiveDay(term).subscribe(res => {
+        console.log(res);
+        let tempWeather = res.list.map(forecast => {
+          return forecast;
+        });
+        this.fiveDayWeather = this.sortFiveDay(tempWeather);
+        console.log(this.fiveDayWeather);
+      });
     });
   }
 

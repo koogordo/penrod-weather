@@ -5,7 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { routes } from './routes';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
+  ],
   exports: [RouterModule],
   declarations: []
 })
