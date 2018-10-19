@@ -1,7 +1,18 @@
-<div class="slds-grid">
-  <div *ngFor="let forecast of fiveDayForcasts" class="slds-col">
-    <ul>
-      <li *ngFor="let weather of forecast">{{weather.main.temp}}</li>
-    </ul>
+<article class="slds-card">
+  <div class="slds-card__header slds-grid">
+    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+      <div class="slds-media__body">
+        <h2 class="slds-card__header-title five-day-card-header">
+          <span>{{ forecast[0].dt_txt | date: 'MMMM d'}}</span>
+        </h2>
+      </div>
+    </header>
   </div>
-</div>
+  <div class="slds-card__body slds-card__body_inner">
+    <h3 class="card-temp"> {{forecast[0].main.temp | temp }}</h3>
+    <h4 class="card-forecast-detail"> Humidity: {{forecast[0].main.humidity}}%</h4>
+    <h4 class="card-forecast-detail"> Pressure: {{forecast[0].main.pressure | pressureConverter}} in</h4>
+    <h4 class="card-forecast-detail"> Wind: {{forecast[0].wind.deg | windDirection}} {{forecast[0].wind.speed}} mph
+    </h4>
+  </div>
+</article>

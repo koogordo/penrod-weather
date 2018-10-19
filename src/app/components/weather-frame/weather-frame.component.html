@@ -1,24 +1,28 @@
-<div class="flex-frame full-height">
+<div [ngClass]="getForecastBackground(currentWeather.weather[0].main)">
   <div class="top-frame-panel">
     <div class="top-panel-item">
-      <h1 class="frame-title">{{weather.name}}</h1>
+      <h1 class="frame-title">{{currentWeather.name}}</h1>
       <h1 class="date-time-display">{{currentDateTime | date: 'EEEE, MMMM d, y'}}</h1>
     </div>
     <div class="top-panel-item">
-      <h1 class="temp">{{ weather.main.temp | temp}} </h1>
+      <h1 class="temp">{{ currentWeather.main.temp | temp}}
+      </h1>
+      <h1 class="uv-index">UV Index: {{currentWeather.uvIndex}} of 10 </h1>
     </div>
     <div class="top-panel-item ">
       <h1 class="frame-title flex-left">
-        <span class="color-hot">H {{weather.main.temp_max | temp}}</span>
+        <span class="color-hot">H {{currentWeather.main.temp_max | temp}}</span>
         |
-        <span class="color-cold">L {{weather.main.temp_min | temp}}</span>
+        <span class="color-cold">L {{currentWeather.main.temp_min | temp}}</span>
       </h1>
-      <h1 class="forecast-detail">Humidity: {{weather.main.humidity}}</h1>
-      <h1 class="forecast-detail">Pressure: {{weather.main.pressure}}</h1>
-      <h1 class="forecast-detail">Wind: {{weather.wind.deg | windDirection}} {{weather.wind.speed}} mph</h1>
+      <h1 class="forecast-detail">Humidity: {{currentWeather.main.humidity}}%</h1>
+      <h1 class="forecast-detail">Pressure: {{currentWeather.main.pressure | pressureConverter}} in</h1>
+      <h1 class="forecast-detail">Wind: {{currentWeather.wind.deg | windDirection}} {{currentWeather.wind.speed}} mph</h1>
     </div>
   </div>
   <div class="bot-frame-panel">
-
+    <div *ngFor="let day of fiveDayWeather" class="bot-panel-item">
+      <app-five-day [forecast]="day"></app-five-day>
+    </div>
   </div>
 </div>

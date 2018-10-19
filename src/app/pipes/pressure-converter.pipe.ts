@@ -4,9 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pressureConverter'
 })
 export class PressureConverterPipe implements PipeTransform {
-
-  transform(value: any, args?: any): any {
-    return null;
+  transform(pressure: number): any {
+    return Math.round(pressure * 0.0145038);
   }
-
 }

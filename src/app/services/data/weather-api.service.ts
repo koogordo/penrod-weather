@@ -7,15 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherApiService {
-  apiID;
-  weatherRoute;
-  fiveDayRoute;
-  sixteenDayRoute;
+  apiID: String;
+  weatherRoute: String;
+  fiveDayRoute: String;
+  sixteenDayRoute: String;
+  uvIndexRoute: String;
   constructor(private http: HttpClient) {
     this.apiID = dataConfig.apiID;
     this.weatherRoute = dataConfig.weatherUrl;
     this.fiveDayRoute = dataConfig.fiveDayForecastUrl;
     this.sixteenDayRoute = dataConfig.sixteenDayForecastUrl;
+    this.uvIndexRoute = dataConfig.uvIndexUrl;
   }
 
   getWeather(id): Observable<any> {
@@ -24,5 +26,11 @@ export class WeatherApiService {
 
   getFiveDay(id): Observable<any> {
     return this.http.get(`${this.fiveDayRoute}?id=${id}&APPID=${this.apiID}`);
+  }
+
+  getUvIndex(lat: number, lon: number): Observable<any> {
+    return this.http.get(
+      `${this.uvIndexRoute}?APPID=${this.apiID}&lat=${lat}&lon=${lon}`
+    );
   }
 }

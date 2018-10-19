@@ -1,0 +1,16 @@
+.five-day-card-header {
+  background-color: #ffde4c;
+  border: solid 1px #ffde4c;
+  border-radius: 2px;
+  padding: 5px !important;
+  text-align: center !important;
+}
+
+/* headers and titles */
+.card-temp {
+  font-size: 1.7em;
+}
+.card-forecast-detail {
+  font-size: 1em;
+  color: #514f4d;
+}
