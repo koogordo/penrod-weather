@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from './services/data/database.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,15 +20,15 @@ export class AppComponent {
     name: new FormControl(),
     country: new FormControl()
   });
-  constructor(private db: DatabaseService) {}
+  constructor(private db: DatabaseService, private router: Router) {
+    this.loadData();
+  }
   ngOnInit() {
     this.submitFail = false;
     this.submitFail = false;
     this.successMessage = '';
     this.failMessage = '';
-    this.db.getLocations().subscribe(locs => {
-      this.locations = locs;
-    });
+    this.loadData();
   }
 
   onSubmit() {
@@ -63,6 +62,13 @@ export class AppComponent {
       }, 2000);
       this.reloadData();
     }
+  }
+
+  loadData() {
+    this.db.getLocations().subscribe(locs => {
+      this.locations = locs;
+      this.router.navigate([`/viewweather/${this.locations[0].cityId}`]);
+    });
   }
 
   reloadData() {
