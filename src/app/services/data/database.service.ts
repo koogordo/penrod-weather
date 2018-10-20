@@ -15,11 +15,17 @@ export class DatabaseService {
     return this.http.get(`http://localhost:5000/api/location/fetch/${cityId}`);
   }
 
-  addLocation() {
-   return this.http.post(`http://localhost:5000/addlocation`, {});
+  addLocation(location) {
+    console.log(location);
+    return this.http.post(
+      `http://localhost:5000/api/location/createlocation`,
+      location
+    );
   }
 
   deleteLocation(cityId) {
-   return this.http.post(`http://localhost:5000/deletelocation`, {cityId});
+    return this.http.post(`http://localhost:5000/api/location/deletelocation`, {
+      cityId
+    });
   }
 }

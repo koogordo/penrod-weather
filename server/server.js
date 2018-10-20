@@ -7,7 +7,8 @@ const mongo = require('mongoose');
 const db = require('./server.conf.json').mongoUri;
 const app = express();
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 // import routes
 const location = require('./api/location');
@@ -20,8 +21,6 @@ mongo
   .catch(err => {
     console.log(err);
   });
-
-
 
 // set routes to our mini api
 app.use('/api/location', location);

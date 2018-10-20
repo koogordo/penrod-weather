@@ -1,14 +1,61 @@
 <div class="slds-grid full-height">
-  <div class="slds-col full-height slds-size_2-of-12">
-    <nav class="slds-nav-vertical" aria-label="Sub page">
-      <div class="slds-nav-vertical__section">
-        <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Locations</h2>
-        <ul>
-          <li *ngFor="let location of locations" class="slds-nav-vertical__item"><a [routerLink]="['viewweather', location.cityId]"
-              class="slds-nav-vertical__action" aria-describedby="entity-header" aria-current="page">{{location.name}}</a></li>
-        </ul>
-      </div>
-    </nav>
+  <div class="slds-col full-height slds-size_2-of-12 nav-column">
+    <div class="top-nav-column-item">
+      <nav class="slds-nav-vertical" aria-label="Sub page">
+        <div class="slds-nav-vertical__section">
+          <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Locations</h2>
+          <ul>
+            <li *ngFor="let location of locations" class="slds-nav-vertical__item">
+              <a [routerLink]="['viewweather', location.cityId]" class="slds-nav-vertical__action" aria-describedby="entity-header"
+                aria-current="page">{{location.name}}
+                <button class="slds-button slds-button_icon delete-button" (click)="deleteLocation($event)" value="{{location.cityId}}">
+                  <fa name="close" class="delete-x"></fa>
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="bot-nav-column-item">
+      <form class="add-loc-form" [formGroup]="newLocationForm" (ngSubmit)="onSubmit()">
+        <div class="slds-form-element">
+          <label class="slds-form-element__label" for="form-element-01">City ID</label>
+          <div class="slds-form-element__control">
+            <input formControlName="cityId" type="text" id="form-element-01" class="slds-input" />
+          </div>
+        </div>
+        <div class="slds-form-element">
+          <label class="slds-form-element__label" for="form-element-01">City Name</label>
+          <div class="slds-form-element__control">
+            <input formControlName="name" type="text" id="form-element-01" class="slds-input" />
+          </div>
+        </div>
+        <div class="slds-form-element">
+          <label class="slds-form-element__label" for="form-element-01">Country Code</label>
+          <div class="slds-form-element__control">
+            <input formControlName="country" type="text" id="form-element-01" class="slds-input" />
+          </div>
+        </div>
+
+        <div class="submit-btn-div">
+          <button type="submit" class="slds-button slds-button_brand submit-btn">Add to Watchlist</button>
+        </div>
+        <div class="submit-btn-div alert alert-success" [hidden]="!submitSuccess">
+          <h6>{{successMessage}}</h6>
+        </div>
+        <div class="submit-btn-div alert alert-fail" [hidden]="!submitFail">
+          <h6>{{failMessage}}</h6>
+        </div>
+      </form>
+    </div>
+
+
+
+
+
+
   </div>
   <div class="slds-col full-height slds-size_10-of-12">
     <router-outlet></router-outlet>

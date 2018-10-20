@@ -1,0 +1,59 @@
+.add-loc-form {
+  width: 90%;
+  margin: auto;
+}
+
+/* Flex Layout of Navbar */
+.nav-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-nav-column-item {
+  height: 60%;
+  align-self: auto;
+}
+
+.bot-nav-column-item {
+  height: 40%;
+  align-self: auto;
+}
+
+.submit-btn-div {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #3893e8;
+  /* color: black; */
+}
+
+.delete-button {
+  margin-left: auto;
+}
+
+.delete-x {
+  color: #d43f3a;
+}
+
+.alert-div {
+  width: 100%;
+  margin-top: 5px;
+}
+.alert {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+  margin-top: 3px;
+  color: white;
+}
+
+.alert-success {
+  background-color: #5cb85c;
+}
+.alert-fail {
+  background-color: #d43f3a;
+}

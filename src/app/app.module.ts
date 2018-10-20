@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Custom Modules
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -21,11 +21,27 @@ import { TemperatureConversionPipe } from './pipes/temperature-conversion.pipe';
 import { WindDirectionPipe } from './pipes/wind-direction.pipe';
 import { PressureConverterPipe } from './pipes/pressure-converter.pipe';
 
-
+// Third party modules
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
-  declarations: [AppComponent, WeatherFrameComponent, FiveDayComponent, SixteenDayComponent, TemperatureConversionPipe, WindDirectionPipe, PressureConverterPipe],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    WeatherFrameComponent,
+    FiveDayComponent,
+    SixteenDayComponent,
+    TemperatureConversionPipe,
+    WindDirectionPipe,
+    PressureConverterPipe
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
+  ],
   providers: [DatabaseService, WeatherApiService],
   bootstrap: [AppComponent]
 })
