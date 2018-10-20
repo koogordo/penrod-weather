@@ -15,7 +15,7 @@ const location = require('./api/location');
 
 // connect to mlab mongoDB
 mongo
-  .connect(process.env.MONGOLAB_URI || db)
+  .connect(process.env.PROD_MONGODB || db)
   .then(() => {
     console.log('MongoDB Connected');
   })

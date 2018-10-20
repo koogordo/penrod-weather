@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class DatabaseService {
   rootUrl;
   constructor(private http: HttpClient) {
-    this.rootUrl = 'http://localhost:5000';
+    this.rootUrl = 'http://penrod-weather.herokuapp.com';
   }
 
   getLocations(): Observable<any> {
