@@ -6,28 +6,23 @@ import { Observable } from 'rxjs';
 })
 export class DatabaseService {
   rootUrl;
-  constructor(private http: HttpClient) {
-    this.rootUrl = 'http://penrod-weather.herokuapp.com';
-  }
+  constructor(private http: HttpClient) {}
 
   getLocations(): Observable<any> {
-    return this.http.get(`${this.rootUrl}/api/location/all`);
+    return this.http.get(`/api/location/all`);
   }
 
   getLocation(cityId): Observable<any> {
-    return this.http.get(`${this.rootUrl}/api/location/fetch/${cityId}`);
+    return this.http.get(`/api/location/fetch/${cityId}`);
   }
 
   addLocation(location) {
     console.log(location);
-    return this.http.post(
-      `${this.rootUrl}/api/location/createlocation`,
-      location
-    );
+    return this.http.post(`/api/location/createlocation`, location);
   }
 
   deleteLocation(cityId) {
-    return this.http.post(`${this.rootUrl}/api/location/deletelocation`, {
+    return this.http.post(`/api/location/deletelocation`, {
       cityId
     });
   }
