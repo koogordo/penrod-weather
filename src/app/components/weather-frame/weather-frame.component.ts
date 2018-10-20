@@ -18,7 +18,8 @@ export class WeatherFrameComponent implements OnInit {
   currentDateTime;
   routeInputs;
   uvIndex: any;
-
+  isCelsius;
+  isFahr;
   constructor(private api: WeatherApiService, private route: ActivatedRoute) {
     this.fiveDayWeather = [];
     this.currentWeather = {};
@@ -26,7 +27,8 @@ export class WeatherFrameComponent implements OnInit {
 
   ngOnInit() {
     this.currentDateTime = Date.now();
-
+    this.isCelsius = false;
+    this.isFahr = true;
     this.routeInputs = this.route.params.subscribe(params => {
       const term = params['id'];
 
@@ -81,5 +83,15 @@ export class WeatherFrameComponent implements OnInit {
       classes.push('rain');
     }
     return classes;
+  }
+
+  setIsFahr() {
+    this.isCelsius = false;
+    this.isFahr = true;
+  }
+
+  setIsCels() {
+    this.isFahr = false;
+    this.isCelsius = true;
   }
 }

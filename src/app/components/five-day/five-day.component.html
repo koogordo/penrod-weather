@@ -9,7 +9,7 @@
     </header>
   </div>
   <div class="slds-card__body slds-card__body_inner">
-    <h3 class="card-temp"> {{forecast[0].main.temp | temp }}</h3>
+    <h3 class="card-temp"> {{forecast[0].main.temp | temp }}&deg;F</h3>
     <h4 class="card-forecast-detail"> Humidity: {{forecast[0].main.humidity}}%</h4>
     <h4 class="card-forecast-detail"> Pressure: {{forecast[0].main.pressure | pressureConverter}} in</h4>
     <h4 class="card-forecast-detail"> Wind: {{forecast[0].wind.deg | windDirection}} {{forecast[0].wind.speed}} mph
