@@ -5,13 +5,12 @@ const bodyParser = require('body-parser');
 const mongo = require('mongoose');
 const db = require('./server.conf.json').mongoUri;
 const app = express();
+const location = require('./api/location');
 
+// setting required middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
-// import routes
-const location = require('./api/location');
 
 // connect to mlab mongoDB
 mongo
@@ -23,17 +22,18 @@ mongo
     console.log(err);
   });
 
-// Set static files
+// set static files
 app.use(express.static(path.join(__dirname, '../dist/penrod-weather')));
 
 // set routes to our mini api
 app.use('/api/location', location);
 
+// set path to serve our client side app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-//port and server listen
+// set port and server listen
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

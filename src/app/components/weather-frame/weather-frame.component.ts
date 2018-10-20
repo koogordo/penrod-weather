@@ -5,6 +5,7 @@ import { TemperatureConversionPipe } from '../../pipes/temperature-conversion.pi
 import { DatePipe } from '@angular/common';
 import { WindDirectionPipe } from '../../pipes/wind-direction.pipe';
 import { PressureConverterPipe } from '../../pipes/pressure-converter.pipe';
+
 @Component({
   selector: 'app-weather-frame',
   templateUrl: './weather-frame.component.html',
@@ -71,12 +72,12 @@ export class WeatherFrameComponent implements OnInit {
   }
 
   getForecastBackground(forecast) {
-    let classes = ['flex-frame', 'full-height','weather-panel-bg'];
+    let classes = ['flex-frame', 'full-height', 'weather-panel-bg'];
     if (forecast === 'Clear') {
       classes.push('clear-skys');
     } else if (forecast === 'Clouds') {
       classes.push('cloudy');
-    } else if (forecast === 'Rain' || forecast === 'Drizzle' ) {
+    } else if (forecast === 'Rain' || forecast === 'Drizzle') {
       classes.push('rain');
     }
     return classes;
