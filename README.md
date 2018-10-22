@@ -1,6 +1,6 @@
 # penrod-weather
 
-<h3>Outine </h3>
+<h3>Outine - Brief Description of Important Files/Directories</h3>
 - root
 
 - dist
