@@ -96,20 +96,20 @@
   font-size: 1.2em;
   display: flex;
   justify-content: center;
-  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.2);
+  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.6);
 }
 .uv-index {
   font-size: 1.2em;
   display: flex;
   justify-content: center;
-  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.2);
+  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.6);
 }
 
 .forecast-desc {
   font-size: 1.7em;
   display: flex;
   justify-content: center;
-  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.2);
+  text-shadow: 0px 10px 20px rgba(60, 60, 60, 0.6);
   text-transform: capitalize;
 }
 
