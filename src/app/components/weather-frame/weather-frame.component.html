@@ -24,9 +24,9 @@
           <span class="color-cold">L {{currentWeather.main.temp_min | temp}}&deg;F</span>
         </h1>
         <h1 *ngIf="isCelsius" class="frame-title flex-left">
-          <span class="color-hot">H {{currentWeather.main.temp_max | temp}}&deg;C</span>
+          <span class="color-hot">H {{currentWeather.main.temp_max | temp:'c'}}&deg;C</span>
           |
-          <span class="color-cold">L {{currentWeather.main.temp_min | temp}}&deg;C</span>
+          <span class="color-cold">L {{currentWeather.main.temp_min | temp:'c'}}&deg;C</span>
         </h1>
         <h1 class="forecast-detail">Humidity: {{currentWeather.main.humidity}}%</h1>
         <h1 class="forecast-detail">Pressure: {{currentWeather.main.pressure | pressureConverter}} in</h1>
