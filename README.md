@@ -4,7 +4,7 @@
 - root
 
 - dist
-  - Info about the dist
+  - Final angular build. The index.html file of this directory is what is served by the express server to run the app.
 - e2e
 - node_modules
 - server
