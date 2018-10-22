@@ -18,10 +18,15 @@
         <h1 class="uv-index">UV Index: {{currentWeather.uvIndex}} of 10 </h1>
       </div>
       <div class="top-panel-item ">
-        <h1 class="frame-title flex-left">
-          <span class="color-hot">H {{currentWeather.main.temp_max | temp}}</span>
+        <h1 *ngIf="isFahr" class="frame-title flex-left">
+          <span class="color-hot">H {{currentWeather.main.temp_max | temp}}&deg;F</span>
           |
-          <span class="color-cold">L {{currentWeather.main.temp_min | temp}}</span>
+          <span class="color-cold">L {{currentWeather.main.temp_min | temp}}&deg;F</span>
+        </h1>
+        <h1 *ngIf="isCelsius" class="frame-title flex-left">
+          <span class="color-hot">H {{currentWeather.main.temp_max | temp}}&deg;C</span>
+          |
+          <span class="color-cold">L {{currentWeather.main.temp_min | temp}}&deg;C</span>
         </h1>
         <h1 class="forecast-detail">Humidity: {{currentWeather.main.humidity}}%</h1>
         <h1 class="forecast-detail">Pressure: {{currentWeather.main.pressure | pressureConverter}} in</h1>
