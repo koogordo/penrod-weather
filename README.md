@@ -1,6 +1,7 @@
 # penrod-weather
 
 - root
+
   - dist
     - Info about the dist
   - e2e
@@ -16,7 +17,7 @@
     - server.conf.json
       - This json contains any uri's/keys that the server will use that we want to secure from the user, so they are stored seperately instead of hard coded. An example of such an item would be the MongoDB connection URI.
     - server.js
-    - This is the express server file. This is where express middleware is set, the MongoDB connection is established, the server is set to listen, and the routes are established, including the route to the index.js of the Angular app which is found in the dist directory.
+      - This is the express server file. This is where express middleware is set, the MongoDB connection is established, the server is set to listen, and the routes are established, including the route to the index.js of the Angular app which is found in the dist directory.
   - src
 
     - app
