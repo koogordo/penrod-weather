@@ -7,7 +7,10 @@ import { routes } from './routes';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload',
+      useHash: true
+    })
   ],
   exports: [RouterModule],
   declarations: []
