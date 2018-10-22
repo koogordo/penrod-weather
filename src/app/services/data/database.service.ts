@@ -8,23 +8,20 @@ export class DatabaseService {
   constructor(private http: HttpClient) {}
 
   getLocations(): Observable<any> {
-    return this.http.get(`http://localhost:5000/api/location/all`);
+    return this.http.get(`/api/location/all`);
   }
 
   getLocation(cityId): Observable<any> {
-    return this.http.get(`http://localhost:5000/api/location/fetch/${cityId}`);
+    return this.http.get(`/api/location/fetch/${cityId}`);
   }
 
   addLocation(location) {
     console.log(location);
-    return this.http.post(
-      `http://localhost:5000/api/location/createlocation`,
-      location
-    );
+    return this.http.post(`/api/location/createlocation`, location);
   }
 
   deleteLocation(cityId) {
-    return this.http.post(`http://localhost:5000/api/location/deletelocation`, {
+    return this.http.post(`/api/location/deletelocation`, {
       cityId
     });
   }
