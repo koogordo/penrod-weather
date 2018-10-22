@@ -5,6 +5,7 @@ import { TemperatureConversionPipe } from '../../pipes/temperature-conversion.pi
 import { DatePipe } from '@angular/common';
 import { WindDirectionPipe } from '../../pipes/wind-direction.pipe';
 import { PressureConverterPipe } from '../../pipes/pressure-converter.pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather-frame',
@@ -12,26 +13,31 @@ import { PressureConverterPipe } from '../../pipes/pressure-converter.pipe';
   styleUrls: ['./weather-frame.component.css']
 })
 export class WeatherFrameComponent implements OnInit {
+  instanceObservables: Observable<any>[];
+
   currentWeather: any;
   fiveDayWeather: any[];
-  sixteenDayWeather: any;
   currentDateTime;
   routeInputs;
   uvIndex: any;
-  isCelsius;
-  isFahr;
-  constructor(private api: WeatherApiService, private route: ActivatedRoute) {
-    this.fiveDayWeather = [];
-    this.currentWeather = {};
-  }
+  isCelsius: Boolean;
+  isFahr: Boolean;
+  constructor(private api: WeatherApiService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.instanceObservables = [];
+    this.fiveDayWeather = [];
+    this.currentWeather = {};
     this.currentDateTime = Date.now();
     this.isCelsius = false;
     this.isFahr = true;
+
+    // subscribe to the route params so that new location info can be loaded as the
+    // route changes
     this.routeInputs = this.route.params.subscribe(params => {
       const term = params['id'];
 
+      // Grab the forecast for the current date & location ID
       this.api.getWeather(term).subscribe(res => {
         this.currentWeather = res;
         this.api.getUvIndex(res.coord.lat, res.coord.lon).subscribe(res => {
@@ -39,16 +45,19 @@ export class WeatherFrameComponent implements OnInit {
         });
       });
 
+      // Grab the forecasts for the next five days at this location
       this.api.getFiveDay(term).subscribe(res => {
         let tempWeather = res.list.map(forecast => {
           return forecast;
         });
-        this.fiveDayWeather = this.sortFiveDay(tempWeather);
+        this.fiveDayWeather = this.distributeFiveDayInfo(tempWeather);
       });
     });
   }
 
-  sortFiveDay(WeatherArr) {
+  distributeFiveDayInfo(WeatherArr) {
+    // Distribute all the info for the next five days into the proper day array so
+    // we know which day is which
     let day1 = [];
     let day2 = [];
     let day3 = [];
@@ -71,6 +80,8 @@ export class WeatherFrameComponent implements OnInit {
   }
 
   getForecastBackground(forecast, desc) {
+    // gets passed a forecast and a forecast description and sets the approriate
+    // background image by pushing the class name onto the weather-frame class list.
     let classes = ['flex-frame', 'full-height', 'weather-panel-bg'];
     if (forecast === 'Clear') {
       classes.push('clear-skys');
@@ -91,6 +102,7 @@ export class WeatherFrameComponent implements OnInit {
     return classes;
   }
 
+  // setIsFahr and setIsCels are the methods that are used to switch between the C and F temperature displays
   setIsFahr() {
     this.isCelsius = false;
     this.isFahr = true;

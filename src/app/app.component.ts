@@ -12,27 +12,23 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'penrod-weather';
   locations;
-  submitSuccess;
-  submitFail;
+  submitSuccess: Boolean;
+  submitFail: Boolean;
   successMessage: String;
   failMessage: String;
-  showInfo;
   newLocationForm = new FormGroup({
     cityId: new FormControl(),
     name: new FormControl(),
     country: new FormControl()
   });
-  constructor(private db: DatabaseService, private router: Router) {
-    this.loadData();
-  }
+  constructor(private db: DatabaseService, private router: Router) {}
 
   ngOnInit() {
     this.submitFail = false;
     this.submitSuccess = false;
     this.successMessage = '';
     this.failMessage = '';
-    this.showInfo = false;
-    this.loadData();
+    this.loadLocations();
   }
 
   onSubmit() {
@@ -49,6 +45,8 @@ export class AppComponent {
   }
 
   setResponseMessage(res) {
+    // Checks the responses of all the database calls and sets and dislpays
+    // appropriate messages
     if (res.success) {
       this.newLocationForm.reset();
       this.successMessage = res.message;
@@ -57,7 +55,7 @@ export class AppComponent {
         this.submitSuccess = false;
         this.successMessage = '';
       }, 2000);
-      this.reloadData();
+      this.loadLocations();
     } else {
       this.failMessage = res.message;
       this.submitFail = true;
@@ -65,18 +63,14 @@ export class AppComponent {
         this.submitFail = false;
         this.failMessage = '';
       }, 2000);
-      this.reloadData();
+      this.loadLocations();
     }
   }
 
-  loadData() {
-    this.db.getLocations().subscribe(locs => {
-      this.locations = locs;
-      this.router.navigate([`/viewweather/${this.locations[0].cityId}`]);
-    });
-  }
-
-  reloadData() {
+  loadLocations() {
+    // load all locations and navigate to the first location
+    // this allows for added and deleted locations to appear and disappear
+    // when added or deleted
     this.db.getLocations().subscribe(locs => {
       this.locations = locs;
       this.router.navigate([`/viewweather/${this.locations[0].cityId}`]);
