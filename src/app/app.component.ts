@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from './services/data/database.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,7 @@ export class AppComponent {
   submitFail;
   successMessage: String;
   failMessage: String;
+  showInfo;
   newLocationForm = new FormGroup({
     cityId: new FormControl(),
     name: new FormControl(),
@@ -23,11 +25,13 @@ export class AppComponent {
   constructor(private db: DatabaseService, private router: Router) {
     this.loadData();
   }
+
   ngOnInit() {
     this.submitFail = false;
     this.submitFail = false;
     this.successMessage = '';
     this.failMessage = '';
+    this.showInfo = false;
     this.loadData();
   }
 
@@ -46,6 +50,7 @@ export class AppComponent {
 
   setResponseMessage(res) {
     if (res.success) {
+      this.newLocationForm.reset();
       this.successMessage = res.message;
       this.submitSuccess = true;
       setTimeout(() => {
@@ -74,6 +79,7 @@ export class AppComponent {
   reloadData() {
     this.db.getLocations().subscribe(locs => {
       this.locations = locs;
+      this.router.navigate([`/viewweather/${this.locations[0].cityId}`]);
     });
   }
 }

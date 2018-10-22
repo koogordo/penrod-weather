@@ -46,9 +46,11 @@
   width: 100%;
   margin: auto;
   text-align: center;
-  padding: 5px;
-  margin-top: 3px;
+  padding: 15px;
+  height: 50px;
   color: white;
+  position: relative;
+  z-index: 99999;
 }
 
 .alert-success {
@@ -56,4 +58,11 @@
 }
 .alert-fail {
   background-color: #d43f3a;
+}
+
+.city-id-info {
+  position: absolute;
+  top: -60px;
+  left: -15px;
+  width: 170px;
 }

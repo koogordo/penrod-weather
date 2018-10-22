@@ -81,6 +81,12 @@ export class WeatherFrameComponent implements OnInit {
       classes.push('cloudy');
     } else if (forecast === 'Rain' || forecast === 'Drizzle') {
       classes.push('rain');
+    } else if (forecast === 'Snow') {
+      classes.push('snow');
+    } else if (forecast === 'Haze' || forecast === 'Fog') {
+      classes.push('fog');
+    } else if (forecast === 'Overcast') {
+      classes.push('overcast');
     }
     return classes;
   }

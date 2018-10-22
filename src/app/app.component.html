@@ -5,7 +5,7 @@
         <div class="slds-nav-vertical__section">
           <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Locations</h2>
           <ul>
-            <li *ngFor="let location of locations" class="slds-nav-vertical__item">
+            <li id="{{ location.cityId }}" *ngFor="let location of locations" class="slds-nav-vertical__item">
               <a [routerLink]="['viewweather', location.cityId]" class="slds-nav-vertical__action" aria-describedby="entity-header"
                 aria-current="page">{{location.name}}
                 <button class="slds-button slds-button_icon delete-button" (click)="deleteLocation($event)" value="{{location.cityId}}">
@@ -42,16 +42,16 @@
         <div class="submit-btn-div">
           <button type="submit" class="slds-button slds-button_brand submit-btn">Add to Watchlist</button>
         </div>
-        <div class="submit-btn-div alert alert-success" [hidden]="!submitSuccess">
-          <h6>{{successMessage}}</h6>
-        </div>
-        <div class="submit-btn-div alert alert-fail" [hidden]="!submitFail">
-          <h6>{{failMessage}}</h6>
-        </div>
       </form>
     </div>
   </div>
   <div class="slds-col full-height slds-size_10-of-12">
+    <div class="submit-btn-div alert alert-success" [hidden]="!submitSuccess">
+      <h6>{{ successMessage }}</h6>
+    </div>
+    <div class="submit-btn-div alert alert-fail" [hidden]="!submitFail">
+      <h6>{{failMessage}}</h6>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

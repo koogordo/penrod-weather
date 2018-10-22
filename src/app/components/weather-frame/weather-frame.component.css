@@ -61,6 +61,18 @@
   background-image: url('../../../assets/images/rain.jpg');
   background-size: cover;
 }
+.snow {
+  background-image: url('../../../assets/images/snow.jpg');
+  background-size: cover;
+}
+.fog {
+  background-image: url('../../../assets/images/fog.jpg');
+  background-size: cover;
+}
+.overcast {
+  background-image: url('../../../assets/images/overcast.jpg');
+  background-size: cover;
+}
 
 /*Titles and subtitles */
 .frame-title {
