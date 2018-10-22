@@ -14,7 +14,6 @@ import { WeatherFrameComponent } from './components/weather-frame/weather-frame.
 import { DatabaseService } from './services/data/database.service';
 import { WeatherApiService } from './services/data/weather-api.service';
 import { FiveDayComponent } from './components/five-day/five-day.component';
-import { SixteenDayComponent } from './components/sixteen-day/sixteen-day.component';
 
 // App Pipes
 import { TemperatureConversionPipe } from './pipes/temperature-conversion.pipe';
@@ -29,7 +28,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AppComponent,
     WeatherFrameComponent,
     FiveDayComponent,
-    SixteenDayComponent,
     TemperatureConversionPipe,
     WindDirectionPipe,
     PressureConverterPipe

@@ -1,4 +1,4 @@
-<div [ngClass]="getForecastBackground(currentWeather.weather[0].main)">
+<div [ngClass]="getForecastBackground(currentWeather.weather[0].main, currentWeather.weather[0].description)">
   <div class="weather-display-panel">
     <div class="top-frame-panel">
       <div class="top-panel-item">

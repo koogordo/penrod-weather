@@ -28,7 +28,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.submitFail = false;
-    this.submitFail = false;
+    this.submitSuccess = false;
     this.successMessage = '';
     this.failMessage = '';
     this.showInfo = false;

@@ -36,17 +36,14 @@ export class WeatherFrameComponent implements OnInit {
         this.currentWeather = res;
         this.api.getUvIndex(res.coord.lat, res.coord.lon).subscribe(res => {
           this.currentWeather.uvIndex = Math.round(res.value);
-          console.log(this.currentWeather);
         });
       });
 
       this.api.getFiveDay(term).subscribe(res => {
-        console.log(res);
         let tempWeather = res.list.map(forecast => {
           return forecast;
         });
         this.fiveDayWeather = this.sortFiveDay(tempWeather);
-        console.log(this.fiveDayWeather);
       });
     });
   }
@@ -73,11 +70,16 @@ export class WeatherFrameComponent implements OnInit {
     return [day1, day2, day3, day4, day5];
   }
 
-  getForecastBackground(forecast) {
+  getForecastBackground(forecast, desc) {
     let classes = ['flex-frame', 'full-height', 'weather-panel-bg'];
     if (forecast === 'Clear') {
       classes.push('clear-skys');
     } else if (forecast === 'Clouds') {
+      if (desc === 'overcast clouds') {
+        classes.push('overcast');
+      } else {
+        classes.push('clouds');
+      }
       classes.push('cloudy');
     } else if (forecast === 'Rain' || forecast === 'Drizzle') {
       classes.push('rain');
@@ -85,8 +87,6 @@ export class WeatherFrameComponent implements OnInit {
       classes.push('snow');
     } else if (forecast === 'Haze' || forecast === 'Fog') {
       classes.push('fog');
-    } else if (forecast === 'Overcast') {
-      classes.push('overcast');
     }
     return classes;
   }

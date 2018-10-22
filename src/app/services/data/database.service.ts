@@ -16,7 +16,6 @@ export class DatabaseService {
   }
 
   addLocation(location) {
-    console.log(location);
     return this.http.post(`/api/location/createlocation`, location);
   }
 
