@@ -8,6 +8,7 @@ import { PressureConverterPipe } from '../../pipes/pressure-converter.pipe';
   styleUrls: ['./five-day.component.css']
 })
 export class FiveDayComponent implements OnInit {
+  // inputs from the weather frame so data only has to be loaded in one component // (weather-frame.component.tx), instead of in two components
   @Input()
   forecast: any;
   constructor() {}

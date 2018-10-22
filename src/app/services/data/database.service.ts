@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DatabaseService {
+  // Database service makes calls to the express API to pull in all the locations, //delete locations, and create locations.
   constructor(private http: HttpClient) {}
-
   getLocations(): Observable<any> {
     return this.http.get(`/api/location/all`);
   }

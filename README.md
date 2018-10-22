@@ -1,1 +1,43 @@
 # penrod-weather
+
+- root
+  - dist
+    - Info about the dist
+  - e2e
+  - node_modules
+  - server
+    - api
+      - info about api
+    - assets
+      - If the server required any static assets files they would be contained here.
+    - models
+      - Location.js
+        - info about location.js
+    - server.conf.json
+      - This json contains any uri's/keys that the server will use that we want to secure from the user, so they are stored seperately instead of hard coded. An example of such an item would be the MongoDB connection URI.
+    - server.js
+    - This is the express server file. This is where express middleware is set, the MongoDB connection is established, the server is set to listen, and the routes are established, including the route to the index.js of the Angular app which is found in the dist directory.
+  - src
+
+    - app
+      - app-routing
+        - info about app routing
+      - components
+        - five-day
+          - info about five day
+        - weather-frame
+          - info about weather-frame
+      - pipes
+        - info about pipes
+      - services
+        - data
+          - config
+            - info about the data config.json
+        - database.service
+          - info about database service
+        - weather-api.service
+          - info about weather-api.service
+      - app.component.\*
+        - info about all the different app component files
+      - app.module.ts
+        - info about the app.module

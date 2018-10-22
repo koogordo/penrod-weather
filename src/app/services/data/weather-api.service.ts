@@ -7,16 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherApiService {
+  // WeatherApiService makes calls to Open Weather Map API to fetch all the needed // weather info
   apiID: String;
   weatherRoute: String;
   fiveDayRoute: String;
-  sixteenDayRoute: String;
   uvIndexRoute: String;
   constructor(private http: HttpClient) {
     this.apiID = dataConfig.apiID;
     this.weatherRoute = dataConfig.weatherUrl;
     this.fiveDayRoute = dataConfig.fiveDayForecastUrl;
-    this.sixteenDayRoute = dataConfig.sixteenDayForecastUrl;
     this.uvIndexRoute = dataConfig.uvIndexUrl;
   }
 

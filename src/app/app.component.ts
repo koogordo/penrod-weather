@@ -32,39 +32,27 @@ export class AppComponent {
   }
 
   onSubmit() {
+    // Use the database service in the services directory to create a new location // doc on for submission
     this.db.addLocation(this.newLocationForm.value).subscribe(res => {
-      this.setResponseMessage(res);
+      this.handleResponse(res);
     });
   }
 
   deleteLocation(e: any) {
+    // Use the database service in the services directory to delete a location doc
     const cityId = e.target.value;
     this.db.deleteLocation(cityId).subscribe(res => {
-      this.setResponseMessage(res);
+      this.handleResponse(res);
     });
   }
 
-  setResponseMessage(res) {
+  handleResponse(res) {
     // Checks the responses of all the database calls and sets and dislpays
     // appropriate messages
-    if (res.success) {
-      this.newLocationForm.reset();
-      this.successMessage = res.message;
-      this.submitSuccess = true;
-      setTimeout(() => {
-        this.submitSuccess = false;
-        this.successMessage = '';
-      }, 2000);
-      this.loadLocations();
-    } else {
-      this.failMessage = res.message;
-      this.submitFail = true;
-      setTimeout(() => {
-        this.submitFail = false;
-        this.failMessage = '';
-      }, 2000);
-      this.loadLocations();
-    }
+    this.newLocationForm.reset();
+    // pass resonse to displayAlert() and it will display alert with appropriate message
+    this.displayAlert(res);
+    this.loadLocations();
   }
 
   loadLocations() {
@@ -75,5 +63,23 @@ export class AppComponent {
       this.locations = locs;
       this.router.navigate([`/viewweather/${this.locations[0].cityId}`]);
     });
+  }
+
+  displayAlert(res) {
+    if (res.success) {
+      this.successMessage = res.message;
+      this.submitSuccess = true;
+      setTimeout(() => {
+        this.submitSuccess = false;
+        this.successMessage = '';
+      }, 2000);
+    } else {
+      this.failMessage = res.message;
+      this.submitFail = true;
+      setTimeout(() => {
+        this.submitFail = false;
+        this.failMessage = '';
+      }, 2000);
+    }
   }
 }
