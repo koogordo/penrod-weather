@@ -1,4 +1,4 @@
-# penrod-weather <a href="penrod-weather.herokuapp.com">Live View Here</a>
+#<a href="penrod-weather.herokuapp.com">Forecast App</a>
 
 
 ![Alt Text](penrod-weather1.gif?style=centerme)
