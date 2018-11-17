@@ -1,5 +1,7 @@
 # penrod-weather
 
+![Alt Text]('penrod-weather1.gif')
+
 <h3>Outine - Brief Description of Important Files/Directories</h3>
 - root
 
