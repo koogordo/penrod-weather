@@ -1,4 +1,4 @@
-# <a href="penrod-weather.herokuapp.com">Forecast App</a>
+# <a target="_blank" href="http://penrod-weather.herokuapp.com">Forecast App</a>
 
 
 ![Alt Text](penrod-weather1.gif?style=centerme)
